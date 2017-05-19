@@ -4,7 +4,7 @@ public class Jeu {
 		Level level = new Level();
 		String str = "13x11/";
 		str += "D-D-D-D-D-D-D-D-D-D-D-D-D-";
-		str += "D-S-S-S-D-S-S-S-D-S-D-S-D-";
+		str += "D-M-S-S-D-S-S-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
@@ -19,5 +19,9 @@ public class Jeu {
 		System.out.println(level.toString());
 		level.getPlayers().get(0).setPlayerPosition("WEST");
 		System.out.println(level.toString());
+		
+		Moule moule = new Moule(13,11,1,1,60,level);
+		moule.genererCheminMoule();
+		moule.afficherCheminMoule();
 	}
 }
