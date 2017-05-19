@@ -38,7 +38,11 @@ class Moule {
     }
 
     public int getIDMoule() {
-	return (this.posX+1)+(this.posY*this.tailleX); 
+	System.out.println("ca passe");
+	int calcul = (this.posX+1)+(this.posY*this.tailleX);
+	System.out.println("ICI" + calcul);
+	System.out.println("x :" + this.posX+1 + "y: " + this.posY*this.tailleX + "add: " + (this.posX+1+this.posY*this.tailleX));
+	return (this.posX+1)+(this.posY*this.tailleX);
     }
 
     public int getCaseUp(int idCase) {
@@ -74,27 +78,31 @@ class Moule {
     }
 
     public void remplirCase(int idCase) {
-	Integer casePlus = new Integer(cheminMoule.get(idCase)+1);
-
-	if (getCaseRight(idCase) == -2) {
-	    int caseDroite = getCaseRight(idCase);
-	    cheminMoule.set(caseDroite, casePlus);
-	    remplirCase(caseDroite);
-	}
-	if (getCaseLeft(idCase) == -2) {
-	    int caseGauche = getCaseLeft(idCase);
-            cheminMoule.set(caseGauche, casePlus);
+	Integer casePlus = new Integer(cheminMoule.get(idCase-1));
+	System.out.println("" + casePlus);
+	System.out.println("" + cheminMoule.get(getCaseDown(idCase-1)));
+	
+	if (getCaseRight(idCase-1) != 10 && getCaseUp(idCase-1) != 10 && getCaseDown(idCase-1) != 10 && getCaseLeft(idCase-1) != 10)  {
+	    if (cheminMoule.get(getCaseRight(idCase-1)) == -2) {
+		int caseDroite = getCaseRight(idCase);
+		cheminMoule.set(caseDroite, casePlus);
+		remplirCase(caseDroite);
+	    }
+	    if (cheminMoule.get(getCaseLeft(idCase-1)) == -2) {
+		int caseGauche = getCaseLeft(idCase);
+		cheminMoule.set(caseGauche, casePlus);
 	    remplirCase(caseGauche);
-	}
-	if (getCaseDown(idCase) == -2) {
-	    int caseBas = getCaseDown(idCase);
-            cheminMoule.set(caseBas, casePlus);
-            remplirCase(caseBas);
-	}
-	if (getCaseUp(idCase) == -2) {
-	    int caseHaut = getCaseUp(idCase);
-            cheminMoule.set(caseHaut, casePlus);
-            remplirCase(caseHaut);
+	    }
+	    if (cheminMoule.get(getCaseDown(idCase-1)) == -2) {
+		int caseBas = getCaseDown(idCase);
+		cheminMoule.set(caseBas, casePlus);
+		remplirCase(caseBas);
+	    }
+	    if (cheminMoule.get(getCaseUp(idCase-1)) == -2) {
+		int caseHaut = getCaseUp(idCase);
+		cheminMoule.set(caseHaut, casePlus);
+		remplirCase(caseHaut);
+	    }
 	}
     }
 
