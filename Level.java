@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class Level {
 	private ArrayList<Case> grid;
 	private ArrayList<Player> players;
+
 	private static int width;
 	private static int height;
 	private int nbMoules;
@@ -16,6 +17,7 @@ public class Level {
 		this.nbJoueurs = 0;
 		this.grid = new ArrayList<Case>();
 		this.players = new ArrayList<Player>();
+		
 	}
 
 	public void update(String chaine) {
@@ -39,7 +41,8 @@ public class Level {
 			else if (struct[i].equals("B"))
 				grid.add(new Case(pos.x, pos.y, Case.CaseType.BEER));
 			else {
-				grid.add(new Case(pos.x, pos.y, 0));
+				grid.add(new Case(pos.x, pos.y, Integer.parseInt(struct[i])));
+				//moules.add(new Moule(width, height, pos.x, pos.y, Integer.parseInt(struct[i]), this));
 				this.nbMoules++;
 			}
 		}
@@ -54,6 +57,12 @@ public class Level {
 			int joueurY = Integer.parseInt(joueurs[i].substring(index));
 			players.add(new Player(joueurX, joueurY, this));
 		}
+	}
+
+
+
+	public static void setHeight(int height) {
+		Level.height = height;
 	}
 
 	public String toString() {

@@ -18,7 +18,7 @@ public class Player {
 
 	public void setPlayerPosition(int newPositionX, int newPositionY) {
 		int calcul = Level.calculateCase(newPositionX, newPositionY);
-		if(level.getGrid().get(calcul).getCaseType() == Case.CaseType.DUNE){
+		if (level.getGrid().get(calcul).getCaseType() == Case.CaseType.DUNE) {
 			System.out.println("Can't move there");
 			return;
 		}
@@ -27,34 +27,34 @@ public class Player {
 
 		if (level.checkCase(calcul) == Case.CaseType.BEER) {
 			numberBeer++;
-		} else if (level.checkCase(calcul) == Case.CaseType.FRIES){
+		} else if (level.checkCase(calcul) == Case.CaseType.FRIES) {
 			numberFries++;
-		} else if (level.checkCase(calcul) == Case.CaseType.MOULE){
-			
+		} else if (level.checkCase(calcul) == Case.CaseType.MOULE) {
+
 		}
 
 		level.getGrid().get(calcul).setCaseType(Case.CaseType.SAND);
 
 	}
-	
+
 	public void setPlayerPosition(String str) {
 		int newPositionX = 0;
 		int newPositionY = 0;
-		if(str == "SOUTH"){
+		if (str == "SOUTH") {
 			newPositionX = positionX;
 			newPositionY = positionY + 1;
-		} else if (str == "NORTH"){
+		} else if (str == "NORTH") {
 			newPositionX = positionX;
 			newPositionY = positionY - 1;
-		} else if (str == "WEST"){
+		} else if (str == "WEST") {
 			newPositionX = positionX - 1;
 			newPositionY = positionY;
-		} else if (str == "EAST"){
+		} else if (str == "EAST") {
 			newPositionX = positionX + 1;
 			newPositionY = positionY;
 		}
 		int calcul = Level.calculateCase(newPositionX, newPositionY);
-		if(level.getGrid().get(calcul).getCaseType() == Case.CaseType.DUNE){
+		if (level.getGrid().get(calcul).getCaseType() == Case.CaseType.DUNE) {
 			System.out.println("Can't move there");
 			return;
 		}
@@ -63,10 +63,10 @@ public class Player {
 
 		if (level.checkCase(calcul) == Case.CaseType.BEER) {
 			numberBeer++;
-		} else if (level.checkCase(calcul) == Case.CaseType.FRIES){
+		} else if (level.checkCase(calcul) == Case.CaseType.FRIES) {
 			numberFries++;
-		} else if (level.checkCase(calcul) == Case.CaseType.MOULE){
-			
+		} else if (level.checkCase(calcul) == Case.CaseType.MOULE) {
+			score += level.getGrid().get(calcul).getScore();
 		}
 
 		level.getGrid().get(calcul).setCaseType(Case.CaseType.SAND);
