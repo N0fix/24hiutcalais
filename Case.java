@@ -52,7 +52,7 @@ public class Case {
 	}
 
 	public static enum CaseType {
-		SAND, DUNE, BEER, PLAYER, FRIES, MOULE;
+		SAND, DUNE, BEER, FRIES, MOULE;
 	}
 
 	@Override

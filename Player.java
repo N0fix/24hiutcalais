@@ -38,50 +38,19 @@ public class Player {
 	}
 
 	public void setPlayerPosition(String str) {
-		int newPositionX = 0;
-		int newPositionY = 0;
-		if (str == "SOUTH") {
-			newPositionX = positionX;
-			newPositionY = positionY + 1;
-		} else if (str == "NORTH") {
-			newPositionX = positionX;
-			newPositionY = positionY - 1;
-		} else if (str == "WEST") {
-			newPositionX = positionX - 1;
-			newPositionY = positionY;
-		} else if (str == "EAST") {
-			newPositionX = positionX + 1;
-			newPositionY = positionY;
-		}
-		int calcul = Level.calculateCase(newPositionX, newPositionY);
-		if (level.getGrid().get(calcul).getCaseType() == Case.CaseType.DUNE) {
-			System.out.println("Can't move there");
-			return;
-		}
-		positionX = newPositionX;
-		positionY = newPositionY;
 
-		if (level.checkCase(calcul) == Case.CaseType.BEER) {
-			numberBeer++;
-		} else if (level.checkCase(calcul) == Case.CaseType.FRIES) {
-			numberFries++;
-		} else if (level.checkCase(calcul) == Case.CaseType.MOULE) {
-			score += level.getGrid().get(calcul).getScore();
-			int size = level.getMoules().size();
-			int indexToRemove = -1;
-			for(int i = 0; i < size; i++){
-				int x = level.getMoules().get(i).getPosX();
-				int y = level.getMoules().get(i).getPosY();
-				if(x == positionX && y == positionY){
-					indexToRemove = i;
-				}
-			}
-			if(indexToRemove != -1) level.getMoules().remove(indexToRemove);
+		if (str == "S") {
+			positionY += 1;
+		} else if (str == "N") {
+			positionY -= positionY - 1;
+		} else if (str == "W") {
+			positionX = positionX - 1;
+		} else if (str == "E") {
+			positionX = positionX + 1;
+		} else {
 			
 		}
-
-		level.getGrid().get(calcul).setCaseType(Case.CaseType.SAND);
-
+	
 	}
 
 	////
