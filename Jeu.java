@@ -6,7 +6,7 @@ public class Jeu {
 		str += "D-D-D-D-D-D-D-D-D-D-D-D-D-";
 		str += "D-60-S-S-D-S-S-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
-		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
+		str += "D-120-D-D-D-D-D-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
 		str += "D-S-D-D-D-D-D-S-D-S-D-S-D-";
@@ -22,12 +22,11 @@ public class Jeu {
 		
 		Moule moule = new Moule(13,11,1,1,60,level);
 		moule.genererCheminMoule();
-		//moule.afficherCheminMoule();
+		
 		level.getPlayers().get(0).setPlayerPosition("WEST");
 		System.out.println(level.toString());
-		level.getPlayers().get(0).setPlayerPosition("EAST");
+		level.getPlayers().get(0).setPlayerPosition("SOUTH");
 		System.out.println(level.toString());
-		level.getPlayers().get(0).setPlayerPosition("WEST");
 		System.out.println("SCORE JOUEUR 1 = "+ level.getPlayers().get(0).getScore());
 	}
 }

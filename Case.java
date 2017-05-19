@@ -13,7 +13,6 @@ public class Case {
 	}
 
 	public Case(int x, int y, int score) {
-		System.out.println("MON SCORE = " + score);
 		this.score = score;
 		caseType = CaseType.MOULE;
 		positionX = x;

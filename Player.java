@@ -67,6 +67,17 @@ public class Player {
 			numberFries++;
 		} else if (level.checkCase(calcul) == Case.CaseType.MOULE) {
 			score += level.getGrid().get(calcul).getScore();
+			int size = level.getMoules().size();
+			int indexToRemove = -1;
+			for(int i = 0; i < size; i++){
+				int x = level.getMoules().get(i).getPosX();
+				int y = level.getMoules().get(i).getPosY();
+				if(x == positionX && y == positionY){
+					indexToRemove = i;
+				}
+			}
+			if(indexToRemove != -1) level.getMoules().remove(indexToRemove);
+			
 		}
 
 		level.getGrid().get(calcul).setCaseType(Case.CaseType.SAND);

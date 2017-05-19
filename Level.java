@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Level {
 	private ArrayList<Case> grid;
 	private ArrayList<Player> players;
-
+	private ArrayList<Moule> moules;
 	private static int width;
 	private static int height;
 	private int nbMoules;
@@ -17,7 +17,7 @@ public class Level {
 		this.nbJoueurs = 0;
 		this.grid = new ArrayList<Case>();
 		this.players = new ArrayList<Player>();
-		
+		this.moules = new ArrayList<Moule>();
 	}
 
 	public void update(String chaine) {
@@ -42,7 +42,7 @@ public class Level {
 				grid.add(new Case(pos.x, pos.y, Case.CaseType.BEER));
 			else {
 				grid.add(new Case(pos.x, pos.y, Integer.parseInt(struct[i])));
-				//moules.add(new Moule(width, height, pos.x, pos.y, Integer.parseInt(struct[i]), this));
+				this.moules.add(new Moule(width, height, pos.x, pos.y, Integer.parseInt(struct[i]), this));
 				this.nbMoules++;
 			}
 		}
@@ -60,6 +60,14 @@ public class Level {
 	}
 
 
+
+	public ArrayList<Moule> getMoules() {
+		return moules;
+	}
+
+	public void setMoules(ArrayList<Moule> moules) {
+		this.moules = moules;
+	}
 
 	public static void setHeight(int height) {
 		Level.height = height;
