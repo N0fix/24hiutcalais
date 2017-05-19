@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class Level {
 	private ArrayList<Case> grid;
@@ -11,7 +11,7 @@ public class Level {
 
 	public Level() {
 		width = 0;
-		this.height = 0;
+		height = 0;
 		this.nbMoules = 0;
 		this.nbJoueurs = 0;
 		this.grid = new ArrayList<Case>();
@@ -25,7 +25,7 @@ public class Level {
 
 		width = Integer.parseInt(infos[0].substring(0, index));
 		index++;
-		this.height = Integer.parseInt(infos[0].substring(index));
+		height = Integer.parseInt(infos[0].substring(index));
 		String[] struct = infos[1].split("-");
 		for (int i = 0; i < struct.length; i++) {
 			Point pos = this.calculatePosition(i);
@@ -58,18 +58,18 @@ public class Level {
 
 	public String toString() {
 		String str = "";
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
+		for (int j = 0; j < height; j++) {
+			for (int i = 0; i < width; i++ ) {
 				boolean play = false;
 				for(int z = 0; z < players.size(); z++){
 					if(i == players.get(z).getPositionX()
 						&& j == players.get(z).getPositionY()){
 						play = true;
-						str += "J";
+						str += "J ";
 					}
 				}
 				if(play == false)
-					str += grid.get(Level.calculateCase(j, i)).toString();
+					str += grid.get(Level.calculateCase(i, j)).toString()+ " ";
 			}
 			str += "\n";
 		}
@@ -81,7 +81,7 @@ public class Level {
 	}
 
 	private Point calculatePosition(int index) {
-		return new Point(index % this.width, index / height);
+		return new Point(index % width, index / height);
 	}
 
 	public Case.CaseType checkCase(int position) {
@@ -116,9 +116,6 @@ public class Level {
 		return height;
 	}
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
 
 	public int getNbMoules() {
 		return nbMoules;
